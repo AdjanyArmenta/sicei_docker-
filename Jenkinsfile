@@ -10,8 +10,15 @@ pipeline {
         stage('Build'){
             steps{
                 
-                    sh 'docker build -t sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER .'
+                sh 'docker build -t sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER .'
             }
+        }
+        stage('Deploy'){
+            steps{
+
+                sh 'docker run -d -p 8080:8080 --name sicei-${BUILD_NUMBER} sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER'
+            }
+
         }
     }
 }
