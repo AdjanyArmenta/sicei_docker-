@@ -1,9 +1,10 @@
 pipeline {
     agent any 
     stages{
-        stage('First step'){
+        stage('Stop containers'){
             steps{
                 echo 'hola esta es una prueba'
+                sh 'docker ps -a | grep sicei | awk \'{print $1}\' | xargs docker stop'
             }
         }
         stage('Build'){
