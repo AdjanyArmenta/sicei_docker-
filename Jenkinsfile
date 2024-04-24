@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy'){
             steps{
 
-                sh 'docker run -d -p 8080:8080 --name sicei-${BUILD_NUMBER} sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER'
+                sh 'docker run -d -p 8000:8000 --name sicei-${BUILD_NUMBER} sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER'
             }
 
         }
